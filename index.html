@@ -42,7 +42,7 @@
         --navbar-pure: #42b983;
         --navbar-defaults: #0074d9;
         --navbar-simple: #0074d9;
-        --navbar-simple-dark: #0074d9;
+        --navbar-simple-dark: #66d9ef;
         --current-navbar-color: var(--navbar-vue);
       }
 
@@ -145,19 +145,47 @@
         color: #999 !important;
       }
       
-      /* Fix for Dark Theme Coverpage */
-      .theme-dark .cover {
+      /* Remove Simple Dark specific styles - keep it same as Simple */
+      /* .theme-simple-dark styles removed to match Simple theme exactly */
+      
+      /* Theme-specific Coverpage Styles */
+      .theme-vue .cover {
         background: linear-gradient(to left bottom, hsl(118, 100%, 85%) 0%, hsl(181, 100%, 85%) 100%) !important;
       }
       
-      .theme-dark .cover h1,
-      .theme-dark .cover h2,
-      .theme-dark .cover p,
-      .theme-dark .cover a {
+      .theme-buble .cover {
+        background: linear-gradient(to left bottom, hsl(200, 100%, 85%) 0%, hsl(240, 100%, 85%) 100%) !important;
+      }
+      
+      .theme-dark .cover {
+        background: linear-gradient(to left bottom, hsl(50, 100%, 85%) 0%, hsl(60, 100%, 85%) 100%) !important;
+      }
+      
+      .theme-pure .cover {
+        background: linear-gradient(to left bottom, hsl(118, 100%, 85%) 0%, hsl(181, 100%, 85%) 100%) !important;
+      }
+      
+      .theme-defaults .cover {
+        background: linear-gradient(to left bottom, hsl(210, 100%, 85%) 0%, hsl(220, 100%, 85%) 100%) !important;
+      }
+      
+      .theme-simple .cover {
+        background: linear-gradient(to left bottom, hsl(210, 100%, 85%) 0%, hsl(220, 100%, 85%) 100%) !important;
+      }
+      
+      .theme-simple-dark .cover {
+        background: linear-gradient(to left bottom, hsl(210, 100%, 85%) 0%, hsl(220, 100%, 85%) 100%) !important;
+      }
+      
+      /* Ensure cover text is always readable */
+      .cover h1,
+      .cover h2,
+      .cover p,
+      .cover a {
         color: #2c3e50 !important;
       }
       
-      .theme-dark .cover .cover-main {
+      .cover .cover-main {
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
         border-radius: 10px;
