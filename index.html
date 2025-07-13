@@ -33,8 +33,19 @@
     <!-- Default Theme - Vue -->
     <link id="theme-stylesheet" rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
 
-    <!-- Custom styles for theme switcher -->
+    <!-- Custom styles -->
     <style>
+      :root {
+        --navbar-vue: #42b983;
+        --navbar-buble: #325f96;
+        --navbar-dark: #ffb90f;
+        --navbar-pure: #42b983;
+        --navbar-defaults: #0074d9;
+        --navbar-simple: #0074d9;
+        --navbar-simple-dark: #66d9ef;
+        --current-navbar-color: var(--navbar-vue);
+      }
+
       .github-corner {
         position: fixed !important;
         top: 0 !important;
@@ -42,11 +53,7 @@
         z-index: 999 !important;
       }
       
-      * {
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
-      
-      /* Custom navbar styles - Theme aware */
+      /* Navbar Styles */
       .app-nav {
         z-index: 1000;
       }
@@ -63,78 +70,20 @@
         position: relative;
       }
       
-      /* Theme-specific navbar colors */
       .app-nav a {
+        color: var(--current-navbar-color);
         text-decoration: none;
         padding: 5px 10px;
         border-radius: 4px;
         transition: all 0.3s ease;
-        /* Default fallback */
-        color: var(--theme-color, #42b983);
       }
       
       .app-nav a:hover {
+        background-color: var(--current-navbar-color);
         color: white !important;
-        background-color: var(--theme-color, #42b983);
       }
       
-      /* Vue theme colors */
-      body[data-theme="vue"] .app-nav a {
-        color: #42b983;
-      }
-      body[data-theme="vue"] .app-nav a:hover {
-        background-color: #42b983;
-      }
-      
-      /* Buble theme colors */
-      body[data-theme="buble"] .app-nav a {
-        color: #325f96;
-      }
-      body[data-theme="buble"] .app-nav a:hover {
-        background-color: #325f96;
-      }
-      
-      /* Dark theme colors */
-      body[data-theme="dark"] .app-nav a {
-        color: #ffb90f;
-      }
-      body[data-theme="dark"] .app-nav a:hover {
-        background-color: #ffb90f;
-      }
-      
-      /* Pure theme colors */
-      body[data-theme="pure"] .app-nav a {
-        color: #42b983;
-      }
-      body[data-theme="pure"] .app-nav a:hover {
-        background-color: #42b983;
-      }
-      
-      /* Themeable defaults */
-      body[data-theme="defaults"] .app-nav a {
-        color: #0074d9;
-      }
-      body[data-theme="defaults"] .app-nav a:hover {
-        background-color: #0074d9;
-      }
-      
-      /* Simple theme colors */
-      body[data-theme="simple"] .app-nav a {
-        color: #0074d9;
-      }
-      body[data-theme="simple"] .app-nav a:hover {
-        background-color: #0074d9;
-      }
-      
-      /* Simple Dark theme colors */
-      body[data-theme="simple-dark"] .app-nav a {
-        color: #66d9ef;
-      }
-      body[data-theme="simple-dark"] .app-nav a:hover {
-        background-color: #66d9ef;
-      }
-      
-      /* Dropdown styles */
+      /* Dropdown Styles */
       .dropdown {
         position: relative;
         display: inline-block;
@@ -143,6 +92,7 @@
       .dropdown-content {
         display: none;
         position: absolute;
+        background-color: white;
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1001;
@@ -151,24 +101,24 @@
         top: 100%;
         left: 0;
         border: 1px solid #ddd;
-        background-color: var(--base-background-color, white);
       }
       
       .dropdown-content a {
+        color: #333 !important;
         padding: 8px 16px;
         text-decoration: none;
         display: block;
         margin: 0;
         border-radius: 0;
-        color: var(--base-color, #333) !important;
       }
       
       .dropdown-content a:hover {
+        background-color: var(--current-navbar-color);
         color: white !important;
       }
       
       .dropdown-content strong {
-        color: var(--base-color, #666) !important;
+        color: #666 !important;
       }
       
       .dropdown:hover .dropdown-content {
@@ -181,36 +131,46 @@
         margin-left: 5px;
       }
       
-      /* Dark theme dropdown adjustments */
-      body[data-theme="dark"] .dropdown-content,
-      body[data-theme="simple-dark"] .dropdown-content {
+      /* Dark Theme Specific Styles */
+      .theme-dark .dropdown-content {
         background-color: #2d2d2d;
         border-color: #444;
       }
       
-      body[data-theme="dark"] .dropdown-content a,
-      body[data-theme="simple-dark"] .dropdown-content a {
+      .theme-dark .dropdown-content a {
         color: #ccc !important;
       }
       
-      body[data-theme="dark"] .dropdown-content strong,
-      body[data-theme="simple-dark"] .dropdown-content strong {
+      .theme-dark .dropdown-content strong {
         color: #999 !important;
       }
       
-      /* Fix for dark theme coverpage */
-      body[data-theme="dark"] .cover {
+      .theme-simple-dark .dropdown-content {
+        background-color: #2d2d2d;
+        border-color: #444;
+      }
+      
+      .theme-simple-dark .dropdown-content a {
+        color: #ccc !important;
+      }
+      
+      .theme-simple-dark .dropdown-content strong {
+        color: #999 !important;
+      }
+      
+      /* Fix for Dark Theme Coverpage */
+      .theme-dark .cover {
         background: linear-gradient(to left bottom, hsl(118, 100%, 85%) 0%, hsl(181, 100%, 85%) 100%) !important;
       }
       
-      body[data-theme="dark"] .cover h1,
-      body[data-theme="dark"] .cover h2,
-      body[data-theme="dark"] .cover p,
-      body[data-theme="dark"] .cover a {
+      .theme-dark .cover h1,
+      .theme-dark .cover h2,
+      .theme-dark .cover p,
+      .theme-dark .cover a {
         color: #2c3e50 !important;
       }
       
-      body[data-theme="dark"] .cover .cover-main {
+      .theme-dark .cover .cover-main {
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
         border-radius: 10px;
@@ -218,7 +178,36 @@
         margin: 20px;
       }
       
-      /* Mobile responsiveness */
+      /* Theme Color Classes */
+      .theme-vue {
+        --current-navbar-color: var(--navbar-vue);
+      }
+      
+      .theme-buble {
+        --current-navbar-color: var(--navbar-buble);
+      }
+      
+      .theme-dark {
+        --current-navbar-color: var(--navbar-dark);
+      }
+      
+      .theme-pure {
+        --current-navbar-color: var(--navbar-pure);
+      }
+      
+      .theme-defaults {
+        --current-navbar-color: var(--navbar-defaults);
+      }
+      
+      .theme-simple {
+        --current-navbar-color: var(--navbar-simple);
+      }
+      
+      .theme-simple-dark {
+        --current-navbar-color: var(--navbar-simple-dark);
+      }
+      
+      /* Mobile Responsive */
       @media (max-width: 768px) {
         .app-nav li {
           margin: 0 0.5rem;
@@ -231,66 +220,83 @@
     </style>
 </head>
 
-<body>
+<body class="theme-vue">
     <noscript>This page requires JavaScript to work, please enable it or read the list <a href="https://github.com/wdhdev/free-for-life#readme">here</a>.</noscript>
 
     <div id="app">Loading...</div>
 
     <script>
-        // Theme switching function
-        function switchTheme(themeUrl, themeName) {
-            const themeStylesheet = document.getElementById('theme-stylesheet');
-            themeStylesheet.href = themeUrl;
-            localStorage.setItem('selectedTheme', themeUrl);
-            localStorage.setItem('selectedThemeName', themeName);
-            
-            // Set theme data attribute for CSS targeting
-            const themeKey = getThemeKey(themeUrl);
-            document.body.setAttribute('data-theme', themeKey);
-            
-            // Update body class for dark themes
-            if (themeName.toLowerCase().includes('dark')) {
-                document.body.classList.add('dark');
-            } else {
-                document.body.classList.remove('dark');
+        // Theme mapping
+        const themeMap = {
+            'vue.css': 'vue',
+            'buble.css': 'buble', 
+            'dark.css': 'dark',
+            'pure.css': 'pure',
+            'theme-defaults.css': 'defaults',
+            'theme-simple.css': 'simple',
+            'theme-simple-dark.css': 'simple-dark'
+        };
+
+        // Get theme name from URL
+        function getThemeFromUrl(url) {
+            for (const [key, value] of Object.entries(themeMap)) {
+                if (url.includes(key)) {
+                    return value;
+                }
             }
-        }
-        
-        // Get theme key from URL for CSS targeting
-        function getThemeKey(themeUrl) {
-            if (themeUrl.includes('vue.css')) return 'vue';
-            if (themeUrl.includes('buble.css')) return 'buble';
-            if (themeUrl.includes('dark.css')) return 'dark';
-            if (themeUrl.includes('pure.css')) return 'pure';
-            if (themeUrl.includes('theme-defaults.css')) return 'defaults';
-            if (themeUrl.includes('theme-simple-dark.css')) return 'simple-dark';
-            if (themeUrl.includes('theme-simple.css')) return 'simple';
             return 'vue'; // fallback
         }
-        
-        // Load saved theme on page load
+
+        // Switch theme function
+        function switchTheme(themeUrl, themeName) {
+            console.log('Switching to theme:', themeName, 'URL:', themeUrl);
+            
+            const themeStylesheet = document.getElementById('theme-stylesheet');
+            themeStylesheet.href = themeUrl;
+            
+            // Get theme class name
+            const themeClass = getThemeFromUrl(themeUrl);
+            
+            // Remove all theme classes
+            document.body.className = document.body.className.replace(/theme-\w+/g, '');
+            
+            // Add new theme class
+            document.body.classList.add(`theme-${themeClass}`);
+            
+            // Save to localStorage
+            localStorage.setItem('selectedTheme', themeUrl);
+            localStorage.setItem('selectedThemeName', themeName);
+            localStorage.setItem('selectedThemeClass', themeClass);
+            
+            console.log('Theme switched to:', themeClass);
+        }
+
+        // Load saved theme
         const savedTheme = localStorage.getItem('selectedTheme');
         const savedThemeName = localStorage.getItem('selectedThemeName');
-        if (savedTheme && savedThemeName) {
-            switchTheme(savedTheme, savedThemeName);
-        } else {
-            // Set default theme attributes
-            document.body.setAttribute('data-theme', 'vue');
-        }
+        const savedThemeClass = localStorage.getItem('selectedThemeClass');
         
-        // Add event listeners when DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add click event listeners to all theme links
+        if (savedTheme && savedThemeName && savedThemeClass) {
+            document.body.className = `theme-${savedThemeClass}`;
+            document.getElementById('theme-stylesheet').href = savedTheme;
+        }
+
+        // Add event listeners after DOM loads
+        function addThemeListeners() {
             document.querySelectorAll('[data-style-href]').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const themeUrl = this.getAttribute('data-style-href');
-                    const themeName = this.textContent;
+                    const themeName = this.textContent.trim();
                     switchTheme(themeUrl, themeName);
                 });
             });
-        });
+        }
 
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', addThemeListeners);
+
+        // Docsify configuration
         window.$docsify = {
             name: "GitHub Guides",
             repo: "harys722/github-guides",
@@ -303,15 +309,8 @@
             plugins: [
                 function(hook, vm) {
                     hook.doneEach(function() {
-                        // Re-attach event listeners after page navigation
-                        document.querySelectorAll('[data-style-href]').forEach(link => {
-                            link.addEventListener('click', function(e) {
-                                e.preventDefault();
-                                const themeUrl = this.getAttribute('data-style-href');
-                                const themeName = this.textContent;
-                                switchTheme(themeUrl, themeName);
-                            });
-                        });
+                        // Re-add event listeners after navigation
+                        setTimeout(addThemeListeners, 100);
                     });
                 }
             ]
