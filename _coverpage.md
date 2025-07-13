@@ -8,7 +8,5 @@
 - Helpful Resources
 - Practical tips
 
-[Get Started](#github-guides)
+[Get Started](#table-of-contents)
 [GitHub](https://github.com/harys722/github-guides/)
-
-![color](#544545)
