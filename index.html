@@ -27,40 +27,32 @@
     <meta name="twitter:description" content="Learn more about GitHub & GitHub pages as a developer.">
     <meta name="twitter:image" content="https://harys722.github.io/github-guides/src/media/logo.png">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css" />
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
-  </head>
 
-  <body>
-    <noscript>This page requires JavaScript to work, please enable it or read <a href="https://github.com/harys722/github-guides">here</a>.</noscript>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
+    <link rel="stylesheet" media="(prefers-color-scheme: light)" href="https://cdn.jsdelivr.net/npm/docsify/themes/dark.css">
+</head>
 
-    <div id="app">Loading...</div>
+    <body>
+        <noscript>This page requires JavaScript to work, please enable it or read the list <a href="https://github.com/wdhdev/free-for-life#readme">here</a>.</noscript>
 
-    <script>
-      window.$docsify = {
-        name: "GitHub Guides",
-        repo: "harys722/github-guides",
-        auto2top: true,
-        coverpage: true,
-        mergeNavbar: true,
-        search: ["/"],
-        alias: {
-          "/": "https://raw.githubusercontent.com/harys722/github-guides/main/README.md",
-        },
-        darklightTheme: {
-          siteFont : "Source Sans Pro, Helvetica Neue",
-          defaultTheme : "light",
-          codeFontFamily : "Roboto Mono, Monaco, courier, monospace",
-          bodyFontSize: "15px"
-        }
-      }
-    </script>
+        <div id="app">Loading...</div>
 
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-  </body>
+        <script>
+            window.$docsify = {
+                name: "GitHub Guides",
+                repo: "harys722/github-guides",
+                search: ["/"],
+                alias: {
+                    "/": "https://raw.githubusercontent.com/harys722/github-guides/main/README.md"
+                }
+            }
+        </script>
+
+        <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+    </body>
 </html>
