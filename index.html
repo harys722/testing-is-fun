@@ -8,6 +8,7 @@
     <!-- HTML Meta Tags -->
     <title>GitHub Guides</title>
     <meta name="description" content="Learn more about GitHub & GitHub pages as a developer.">
+    <meta name="keywords" content="github,github-guides,guides,tutorials,tips,hacks,jekyll,github-pages" />
 
     <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="GitHub Guides">
@@ -27,12 +28,25 @@
     <meta name="twitter:description" content="Learn more about GitHub & GitHub pages as a developer.">
     <meta name="twitter:image" content="https://harys722.github.io/github-guides/src/media/logo.png">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css" title="docsify-darklight-theme" type="text/css">
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Styles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" title="vue" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css" title="dark" disabled />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/buble.css" title="buble" disabled />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/pure.css" title="pure" disabled />
+    <style>
+      nav.app-nav li ul {
+        min-width: 100px;
+      }
+
+      #carbonads {
+        box-shadow: none !important;
+        width: auto !important;
+      }
+    </style>
   </head>
 
   <body>
@@ -55,15 +69,14 @@
       }
     </script>
 
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-markdown.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-nginx.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/index.min.js" type="text/javascript"></script>
-
-    <style>
-      blockquote:first-of-type {
-        background-color: rgba(255, 215, 0, 0.2);
-      }
-    </style>
   </body>
 </html>
