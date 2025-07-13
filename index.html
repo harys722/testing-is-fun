@@ -30,50 +30,11 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
 
-    <!-- Theme Stylesheets - Default to light theme -->
-    <link id="theme-light" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
-    <link id="theme-dark" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css" disabled>
+    <!-- Default Theme - Vue -->
+    <link id="theme-stylesheet" rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
 
-    <!-- Custom styles for theme toggle -->
+    <!-- Custom styles for theme switcher -->
     <style>
-      .theme-toggle {
-        position: fixed;
-        top: 80px;
-        right: 20px;
-        z-index: 1000;
-        background: var(--theme-color, #42b983);
-        border: none;
-        border-radius: 25px;
-        width: 60px;
-        height: 30px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 14px;
-        color: white;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        font-weight: 500;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      }
-      
-      .theme-toggle:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      }
-      
-      .theme-toggle:active {
-        transform: translateY(0);
-      }
-      
-      
-      .cover .theme-toggle {
-        position: absolute;
-        top: 80px;
-        right: 20px;
-      }
-      
       .github-corner {
         position: fixed !important;
         top: 0 !important;
@@ -85,18 +46,98 @@
         transition: background-color 0.3s ease, color 0.3s ease;
       }
       
+      /* Custom navbar styles */
+      .app-nav {
+        z-index: 1000;
+      }
+      
+      .app-nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .app-nav li {
+        display: inline-block;
+        margin: 0 1rem;
+        position: relative;
+      }
+      
+      .app-nav a {
+        color: var(--theme-color, #42b983);
+        text-decoration: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+      
+      .app-nav a:hover {
+        background-color: var(--theme-color, #42b983);
+        color: white;
+      }
+      
+      /* Dropdown styles */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1001;
+        border-radius: 4px;
+        padding: 8px 0;
+        top: 100%;
+        left: 0;
+        border: 1px solid #ddd;
+      }
+      
+      .dropdown-content a {
+        color: #333;
+        padding: 8px 16px;
+        text-decoration: none;
+        display: block;
+        margin: 0;
+        border-radius: 0;
+      }
+      
+      .dropdown-content a:hover {
+        background-color: var(--theme-color, #42b983);
+        color: white;
+      }
+      
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      
+      .dropdown > a::after {
+        content: ' ▼';
+        font-size: 0.8em;
+        margin-left: 5px;
+      }
+      
+      /* Dark theme adjustments */
+      body.dark .dropdown-content {
+        background-color: #2d2d2d;
+        border-color: #444;
+      }
+      
+      body.dark .dropdown-content a {
+        color: #ccc;
+      }
+      
+      /* Mobile responsiveness */
       @media (max-width: 768px) {
-        .theme-toggle {
-          top: 70px;
-          right: 15px;
-          width: 50px;
-          height: 25px;
-          font-size: 12px;
+        .app-nav li {
+          margin: 0 0.5rem;
         }
         
-        .cover .theme-toggle {
-          top: 70px;
-          right: 15px;
+        .dropdown-content {
+          min-width: 120px;
         }
       }
     </style>
@@ -105,68 +146,65 @@
 <body>
     <noscript>This page requires JavaScript to work, please enable it or read the list <a href="https://github.com/wdhdev/free-for-life#readme">here</a>.</noscript>
 
-    <!-- Theme Toggle Button -->
-    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
-        <span id="themeIcon">Dark</span>
-    </button>
-
     <div id="app">Loading...</div>
 
     <script>
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const lightTheme = document.getElementById('theme-light');
-        const darkTheme = document.getElementById('theme-dark');
-        
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        
-        if (currentTheme === 'dark') {
-            enableDarkTheme();
-        } else {
-            enableLightTheme();
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            if (document.body.classList.contains('dark-theme')) {
-                enableLightTheme();
+        // Theme switching function
+        function switchTheme(themeUrl, themeName) {
+            const themeStylesheet = document.getElementById('theme-stylesheet');
+            themeStylesheet.href = themeUrl;
+            localStorage.setItem('selectedTheme', themeUrl);
+            localStorage.setItem('selectedThemeName', themeName);
+            
+            // Update body class for dark themes
+            if (themeName.toLowerCase().includes('dark')) {
+                document.body.classList.add('dark');
             } else {
-                enableDarkTheme();
+                document.body.classList.remove('dark');
             }
+        }
+        
+        // Load saved theme on page load
+        const savedTheme = localStorage.getItem('selectedTheme');
+        const savedThemeName = localStorage.getItem('selectedThemeName');
+        if (savedTheme && savedThemeName) {
+            switchTheme(savedTheme, savedThemeName);
+        }
+        
+        // Add event listeners when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click event listeners to all theme links
+            document.querySelectorAll('[data-style-href]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const themeUrl = this.getAttribute('data-style-href');
+                    const themeName = this.textContent;
+                    switchTheme(themeUrl, themeName);
+                });
+            });
         });
-        
-        function enableDarkTheme() {
-            lightTheme.disabled = true;
-            darkTheme.disabled = false;
-            document.body.classList.add('dark-theme');
-            themeIcon.textContent = '🌙';
-            localStorage.setItem('theme', 'dark');
-        }
-        
-        function enableLightTheme() {
-            lightTheme.disabled = false;
-            darkTheme.disabled = true;
-            document.body.classList.remove('dark-theme');
-            themeIcon.textContent = '🔆';
-            localStorage.setItem('theme', 'light');
-        }
 
         window.$docsify = {
             name: "GitHub Guides",
             repo: "harys722/github-guides",
             coverpage: true,
-            navbar: true,
-            themeColor: "#FFD700",
             search: ["/"],
+            navbar: 'navbar.md',
             alias: {
                 "/": "https://raw.githubusercontent.com/harys722/github-guides/main/README.md"
             },
             plugins: [
                 function(hook, vm) {
                     hook.doneEach(function() {
-                        const toggle = document.getElementById('themeToggle');
-                        if (toggle) {
-                            toggle.style.display = 'flex';
-                        }
+                        // Re-attach event listeners after page navigation
+                        document.querySelectorAll('[data-style-href]').forEach(link => {
+                            link.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                const themeUrl = this.getAttribute('data-style-href');
+                                const themeName = this.textContent;
+                                switchTheme(themeUrl, themeName);
+                            });
+                        });
                     });
                 }
             ]
