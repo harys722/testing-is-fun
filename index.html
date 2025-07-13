@@ -41,24 +41,29 @@
         <div id="app">Loading...</div>
 
         <script>
-            window.$docsify = {
-                name: "Badges 4 README Profile",
-                repo: "wdhdev/free-for-life",
-                search: ["/"],
-                alias: {
-                    "/": "https://raw.githubusercontent.com/alexandresanlim/Badges4-README.md-Profile/master/README.md"
-                },
-                auto2top: true,
-                loadSidebar: true,
-                maxLevel: 0,
-                subMaxLevel: 3,
-                search: {
-                    placeholder: 'Type to search',
-                    noData: 'No matches found.',
-                    depth: 2
-                }
-            };
-        </script>
+  window.$docsify = {
+    name: "Badges 4 README Profile",
+    repo: "wdhdev/free-for-life",
+    alias: {
+      "/": "https://raw.githubusercontent.com/alexandresanlim/Badges4-README.md-Profile/master/README.md"
+    },
+    auto2top: true,
+    loadSidebar: true,
+    maxLevel: 0,
+    subMaxLevel: 3,
+    search: {
+      placeholder: 'Type to search',
+      noData: 'No matches found.',
+      depth: 2
+    },
+    darklightTheme: {
+      siteFont: "Source Sans Pro, Helvetica Neue",
+      defaultTheme: "dark",
+      codeFontFamily: "Roboto Mono, Monaco, courier, monospace",
+      bodyFontSize: "15px"
+    }
+  };
+</script>
 
         <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
