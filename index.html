@@ -8,7 +8,6 @@
     <!-- HTML Meta Tags -->
     <title>GitHub Guides</title>
     <meta name="description" content="Learn more about GitHub & GitHub pages as a developer.">
-    <meta name="keywords" content="github,github-guides,guides,tutorials,tips,hacks,jekyll,github-pages" />
 
     <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="GitHub Guides">
@@ -28,159 +27,39 @@
     <meta name="twitter:description" content="Learn more about GitHub & GitHub pages as a developer.">
     <meta name="twitter:image" content="https://harys722.github.io/github-guides/src/media/logo.png">
 
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css" />
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
-
-    <!-- Styles -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" title="vue" />
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css" title="dark" disabled />
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/buble.css" title="buble" disabled />
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/pure.css" title="pure" disabled />
-    <style>
-      nav.app-nav li ul {
-        min-width: 100px;
-      }
-
-      #carbonads {
-        box-shadow: none !important;
-        width: auto !important;
-      }
-    </style>
   </head>
 
   <body>
-    <div id="app">Loading ...</div>
-    <script src="//cdn.jsdelivr.net/npm/docsify-plugin-carbon@1"></script>
+    <noscript>This page requires JavaScript to work, please enable it or read <a href="https://github.com/harys722/github-guides">here</a>.</noscript>
+
+    <div id="app">Loading...</div>
+
     <script>
-      // Set html "lang" attribute based on URL
-      var lang = location.hash.match(/#\/(de-de|es|ru-ru|zh-cn)\//);
-
-      if (lang) {
-        document.documentElement.setAttribute('lang', lang[1]);
-      }
-
-      // Docsify configuration
       window.$docsify = {
+        name: "GitHub Guides",
+        repo: "harys722/github-guides",
+        coverpage: true,
+        auto2top: false,
+        search: ["/"],
         alias: {
           "/": "https://raw.githubusercontent.com/harys722/github-guides/main/README.md",
         },
-        auto2top: true,
-        coverpage: true,
-        executeScript: true,
-        mergeNavbar: true,
-        maxLevel: 4,
-        subMaxLevel: 2,
-        name: 'GitHub Guides',
-        search: {
-          noData: {
-            '/': 'No results!',
-          },
-          paths: 'auto',
-          placeholder: {
-            '/': 'Search',
-          },
-        },
-        vueComponents: {
-          'button-counter': {
-            template:
-              '<button @click="count += 1">You clicked me {{ count }} times</button>',
-            data: function () {
-              return {
-                count: 0,
-              };
-            },
-          },
-        },
-        vueGlobalOptions: {
-          data: function () {
-            return {
-              count: 0,
-              message: 'Hello, World!',
-              // Fake API response
-              images: [
-                { title: 'Image 1', url: 'https://picsum.photos/150?random=1' },
-                { title: 'Image 2', url: 'https://picsum.photos/150?random=2' },
-                { title: 'Image 3', url: 'https://picsum.photos/150?random=3' },
-              ],
-            };
-          },
-          computed: {
-            timeOfDay: function () {
-              const date = new Date();
-              const hours = date.getHours();
-
-              if (hours < 12) {
-                return 'morning';
-              } else if (hours < 18) {
-                return 'afternoon';
-              } else {
-                return 'evening';
-              }
-            },
-          },
-          methods: {
-            hello: function () {
-              alert(this.message);
-            },
-          },
-        },
-        vueMounts: {
-          '#counter': {
-            data: function () {
-              return {
-                count: 0,
-              };
-            },
-          },
-        },
-        plugins: [
-          DocsifyCarbon.create('CEBI6KQE', 'docsifyjsorg'),
-          function (hook, vm) {
-            hook.beforeEach(function (html) {
-              if (/githubusercontent\.com/.test(vm.route.file)) {
-                url = vm.route.file
-                  .replace('raw.githubusercontent.com', 'github.com')
-                  .replace(/\/master/, '/blob/master');
-              } else if (/jsdelivr\.net/.test(vm.route.file)) {
-                url = vm.route.file
-                  .replace('cdn.jsdelivr.net/gh', 'github.com')
-                  .replace('@master', '/blob/master');
-              } else {
-                url =
-                  'https://github.com/docsifyjs/docsify/blob/develop/docs/' +
-                  vm.route.file;
-              }
-              var editHtml = '[:memo: Edit Document](' + url + ')\n';
-              return (
-                editHtml +
-                html +
-                '\n\n----\n\n' +
-                '<a href="https://docsify.js.org" target="_blank" style="color: inherit; font-weight: normal; text-decoration: none;">Powered by docsify</a>'
-              );
-            })
-          },
-        ],
-      };
-    </script>
-    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-markdown.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-nginx.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>
-    <script>
-      // Public site only
-      if (/docsify/.test(location.host)) {
-        document.write(
-          '<script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/ga.min.js"><\/script>'
-        );
-        document.write(
-          '<script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/matomo.min.js"><\/script>'
-        );
+        darklightTheme: {
+          siteFont : "Source Sans Pro, Helvetica Neue",
+          defaultTheme : "light",
+          codeFontFamily : "Roboto Mono, Monaco, courier, monospace",
+          bodyFontSize: "15px"
+        }
       }
     </script>
-    <script src="//cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   </body>
 </html>
