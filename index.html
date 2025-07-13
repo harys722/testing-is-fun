@@ -46,12 +46,22 @@
                 repo: "wdhdev/free-for-life",
                 search: ["/"],
                 alias: {
-                    "/": "https://raw.githubusercontent.com/alexandresanlim/Badges4-README.md-Profile/master/README.md",
+                    "/": "https://raw.githubusercontent.com/alexandresanlim/Badges4-README.md-Profile/master/README.md"
+                },
+                auto2top: true,
+                loadSidebar: true,
+                maxLevel: 0,
+                subMaxLevel: 3,
+                search: {
+                    placeholder: 'Type to search',
+                    noData: 'No matches found.',
+                    depth: 2
                 }
-            }
+            };
         </script>
 
         <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
     </body>
 </html>
