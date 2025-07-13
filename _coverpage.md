@@ -11,4 +11,4 @@
 [Get Started](#github-guides)
 [GitHub](https://github.com/harys722/github-guides/)
 
-![color](#f0f0f0)
+![color](#544545)
